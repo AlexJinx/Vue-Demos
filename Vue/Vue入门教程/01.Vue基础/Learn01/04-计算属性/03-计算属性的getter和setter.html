@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{firstName}} {{lastName}}</h3>
+
+        <!-- 计算属性不用像方法一样加括号 -->
+        <h3>{{fullName}}</h3>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Lebron',
+                lastName: 'James'
+            },
+            computed: {
+
+                //计算属性实质上还是一个属性，只是下面哪种方法，是计算属性的简写，默认的是走的 Set 方法，所以不用像方法一样加扩展来使用，因为本质上他就是属性
+
+                fullName: {
+                    // fullName
+                    get: function () {
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    // fullName = 'abc'
+                    set: function () {
+                        console.log('Set');
+                    }
+                    // set: function (newValue) {
+                    //     console.log(newValue);
+                    // }
+                },
+
+                fullName() {
+                    return this.firstName + ' ' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

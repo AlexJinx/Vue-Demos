@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 当方法不需要传入参数的时候，可以省略括号 -->
+        <!-- <button @click="btnOneClick">按钮1</button>
+        <button @click="btnOneClick()">按钮1</button> -->
+
+
+
+        <!-- 
+        关于事件 event
+            1.当方法中有一个参数，而你不传的话，方法会默认把这个参数当作系统的 event 变量。但是，如果你加了括号，那么系统就会认定你就是不想传，则会打印 undefined。
+            2.当你传了的话，系统就会当作 你传过来的这个变量。
+            3.当你又想传变量又想传event的时候，你只需要把 形参 写成 $event 即可。
+        -->
+        <!-- <button @click="btnTwoClick">按钮2</button>
+        <button @click="btnTwoClick()">按钮21</button>
+
+        <button @click="btnTwoClick('asdf')">按钮22</button>
+        <button @click="btnTwoClick(111)">按钮222</button>
+
+        <button @click="btnThreeClick(1,'wnm',$event)">按钮3</button> -->
+
+
+
+        <!-- 
+        v-on的修饰符
+            1：.stop修饰符 --可用于阻止事件冒泡
+            2: .prevent --阻止默认事件
+            3: 案件监听事件: .enter 为回车，其他按键对应的需要自己去查
+            4: .once修饰符 --只触发一次事件
+         -->
+        <!-- <div @click="divStop" style="background-color: pink; width: 150px;">
+            divStop
+            <button @click.stop="btnStop">btnStop</button>
+        </div> -->
+
+        <!-- <form action="www.baidu.com">
+            <input type="submit" @click="submitClick" value="提交">
+        </form> -->
+
+        <!-- <input type="text" @keyup="keyUpClick"><br>
+        <input type="text" @keyup.enter="keyUpClick"> -->
+
+        <button @click.once="onceClick">只触发一次</button>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                btnOneClick() {
+                    console.log('btnOneClick');
+                },
+                btnTwoClick(event) {
+                    console.log('btnTwoClick--------', event);
+                },
+                btnThreeClick(paraOne, paraTwo, event) {
+                    console.log('btnThreeClick--------------', paraOne, paraTwo, event);
+                },
+
+
+                divStop() {
+                    console.log('divStop');
+                },
+                btnStop() {
+                    console.log('btnStop');
+                },
+
+                submitClick() {
+                    console.log('submitClick');
+                },
+
+                keyUpClick() {
+                    console.log('keyUpClick');
+                },
+
+                onceClick() {
+                    console.log('onceClick');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

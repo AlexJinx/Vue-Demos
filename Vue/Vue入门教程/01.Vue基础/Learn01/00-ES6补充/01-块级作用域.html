@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+
+
+    <script>
+        const conObj = {
+            name: '王尼玛',
+            age: 22,
+        }
+
+        console.log(conObj.name);
+        conObj = {
+            name: '王尼玛',
+            age: 22,
+        }
+
+
+
+        // console.log(conObj.name);
+        // conObj.name = '啾啾啾';
+        // console.log(conObj.name);
+    </script>
+    <!-- <script>
+        const conNum = 1;
+
+        console.log(conNum);
+        conNum = 2;
+        console.log(conNum);
+    </script> -->
+
+
+
+
+
+    <!-- <script>
+        var arr = [1, 2];
+        var exA;
+        var exB;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                exA = function () {
+                    console.log(i);
+                }
+            } else {
+                exB = function () {
+                    console.log(i);
+                }
+            }
+        }
+        exA();
+        exB();
+    </script> -->
+
+
+    <!-- <script>
+        var num = 1;
+        var func = function () {
+            console.log(num);
+        }
+
+        var exA = func;
+        num = 99;
+        var exB = func;
+
+        // exA();
+        // exB();
+    </script> -->
+
+    <!-- <script>
+        var btnArr = document.getElementsByTagName('button');
+
+        // for (var i = 0; i < btnArr.length; i++) {
+        //     btnArr[i].addEventListener('click', function () {
+        //         console.log('第' + i + '个按钮被点击');
+        //     })
+        // };
+        for (var i = 0; i < btnArr.length; i++) {
+
+            (function (i) {
+                btnArr[i].addEventListener('click', function () {
+                    console.log('第' + i + '个按钮被点击');
+                })
+            })(i)
+
+        };
+    </script> -->
+
+
+    <!-- <script>
+        // {
+        //     var name = 'code';
+        //     let nameLet = 'code';
+        //     console.log(name);
+        //     console.log(nameLet);
+        // }
+        // console.log(name);
+        // console.log(nameLet);
+
+        var btnArr = document.getElementsByTagName('button');
+        console.log(btnArr);
+
+        for (var i = 0; i < btnArr.length; i++) {
+            btnArr[i].addEventListener('click', function () {
+                console.log('第' + i + '个按钮被点击');
+            })
+        };
+    </script> -->
+</body>
+
+</html>

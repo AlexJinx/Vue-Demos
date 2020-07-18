@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+        遍历数组 
+            1：一般处理方式
+            2: 加上下标
+        -->
+        <ul>
+            <li v-for="item in arrList">{{item}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="(item,index) in arrList">{{++index}}-{{item}}</li>
+        </ul>
+
+        <!-- 
+        遍历对象
+            1: 遍历对象有三个参数
+                1. 对象的值
+                2. 对象的属性名
+                3. 对象的下标
+        -->
+        <ul>
+            <li v-for="(x,y,z) in userInfo">{{x}}-{{y}}-{{z}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="(item,index) in arr">{{item}}</li>
+        </ul>
+        <button @click="btnClick">点击</button>
+
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                arrList: ['王尼玛', '啾啾啾', '啾宝', '靖'],
+                userInfo: {
+                    name: '王尼玛',
+                    age: 18,
+                    height: 185
+                },
+                arr: [1, 2, 3, 4, 5, 6, 10, 7, 8, 9]
+            },
+            methods: {
+                btnClick() {
+                    this.arr[0] = 88;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

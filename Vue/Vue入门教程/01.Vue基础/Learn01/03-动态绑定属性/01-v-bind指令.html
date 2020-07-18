@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+
+        .fontcolor {
+            color: pink;
+        }
+
+        .fontsize {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3 class="active">{{message}}</h3>
+        <h3 :class="active">{{message}}</h3>
+
+        <!-- 对象语法 -->
+        <h3 v-bind:class="{fontcolor : isTrue , fontsize : false}">{{message}}</h3>
+        <h3 :class="getClass()">{{message}}</h3>
+
+        <!-- 数组语法
+             加上引号就是字符串，不加就是变量
+        -->
+        <h3 :class="[active,'fontsize']">{{message}}</h3>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好!",
+                active: "active",
+                fontSize: "fontsize",
+                isTrue: true
+            },
+            methods: {
+                getClass() {
+                    return {
+                        fontcolor: this.isTrue,
+                        fontsize: false
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

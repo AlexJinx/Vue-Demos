@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>单个设置样式</h1>
+        <ul>
+            <li v-for="(m,n) in movies" @click="singleSetClass(m,n)" :class="n===activeClass?'active':''">
+                {{n}}-{{m}}
+            </li>
+        </ul>
+        <hr>
+        </hr>
+        <h1>多个设置样式</h1>
+        <ul>
+            <li v-for="(m,n) in movies" @click="multipleSetClass(m,n)" :class="selected.indexOf(n)!=-1?'active' : ''">
+                {{n}}-{{m}}
+            </li>
+        </ul>
+        <hr>
+        </hr>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                movies: ["刀剑神域", "从零开始的异世界", "加速世界", "龙之谷"],
+                activeClass: -1,
+                selected: []
+            },
+            methods: {
+                singleSetClass(m, n) {
+                    this.activeClass = n;
+                },
+
+                multipleSetClass(m, n) {
+                    if (this.selected.indexOf(n) == -1) {
+                        this.selected.push(n);
+                    } else {
+                        let index = this.selected.indexOf(n);
+                        this.selected.splice(index, 1);
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

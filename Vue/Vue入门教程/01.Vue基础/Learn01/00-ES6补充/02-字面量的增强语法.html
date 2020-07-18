@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let name = 'wnm';
+        let age = 22;
+
+        //属性增强写法
+        //Es5
+        let objOne = {
+            name: name,
+            age: age
+        }
+        //ES6
+        let objTwo = {
+            name,
+            age
+        }
+
+
+        //函数增强写法
+        //ES5
+        let funcOne = {
+            rum: function () {
+                console.log('跑步');
+            }
+        }
+
+        //ES6
+        let funcOne = {
+            rum() {
+                console.log('跑步');
+            }
+        }
+    </script>
+</body>
+
+</html>

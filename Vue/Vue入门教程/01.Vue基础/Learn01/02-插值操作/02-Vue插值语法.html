@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- 01 - v-once -->
+        <h1>{{message}}</h1>
+        <h1 v-once>{{message}}</h1>
+
+
+        <!-- v-html -->
+        <span v-html="url"></span>
+
+        <!-- v-text -->
+        <h1>{{message}}</h1>
+        <h1 v-text="message">asdfasdf</h1>
+
+
+        <!-- v-pre -->
+        <h1>{{message}}</h1>
+        <h1 v-pre>{{message}}</h1>
+
+
+        <!-- v-cloak -->
+        <h1>{{message}}</h1>
+        <h1 v-pre>{{message}}</h1>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        /*
+        v-once: 绑定的数据只渲染一次，不随着数据的改变而改变
+        v-html: 把HTML字符串转换成HTML代码
+        v-text：把字符串显示在界面中，只能是string类型
+        v-pre： 不解析Mustache语法
+        v-cloak 主要是为了解决在页面渲染完成之后，而Vuejs还没有加载完成的情况，就会导致Mustache语法不生效，进而直接导致页面上显示出大括号语法。
+                使用方法，通过在 挂载的根节点上加上 v-cloak 属性，通过Css的属性样式来隐藏根节点，等待Vuejs加载完成之后，判断根节点上是否有 v-cloak 属性，又则删除点，这样就能成功加载了。
+                可通过设置 setTimeout 来重现场景。   
+                Css:
+                    <style>
+                        [v-cloak] {
+                            display: none;
+                        }
+                    </style>
+                
+                Js:
+                    setTimeout(() => {
+                        const app = new Vue({
+                            el: "#app",
+                            data: {
+                                message: "hello world",
+                                url: '<a href="http://www.baidu.com">百度一下</a>'
+                            }
+                        })
+                    }, 1000);             
+         */
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "hello world",
+                url: '<a href="http://www.baidu.com">百度一下</a>'
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app">
+		<h2>当前计数:{{conuter}}</h2>
+		<!-- <button v-on:click="connter++">+</button>
+		<button v-on:click="connter--">-</button> -->
+		<button v-on:click="addtion">+</button>
+		<button @click="subtraction">-</button>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		const obj = {
+			conuter: 0,
+			message: "消息"
+		}
+
+		const app = new Vue({
+			el: document.getElementById('app'),
+			// el: '#app',
+			data: obj,
+			// data: {
+			// 	conuter: 0,
+			// },
+			methods: {
+				addtion() {
+					console.log('exAddtion');
+					this.conuter++;
+				},
+				subtraction() {
+					console.log('exSubtract');
+					this.conuter--;
+				}
+			},
+			beforeCreate() {
+				console.log('exBC');
+
+			}
+		})
+	</script>
+</body>
+
+</html>
