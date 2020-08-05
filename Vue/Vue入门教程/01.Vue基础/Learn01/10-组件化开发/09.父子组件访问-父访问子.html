@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn ref='one'></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+        <button @click="btnClick">按钮</button>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h1>我是子组件</h1>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    name: 'WNM'
+                }
+            },
+            props: {
+            },
+            methods: {
+                showMessage() {
+                    console.log('childMsg');
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+            },
+            components: {
+                cpn
+            },
+            methods: {
+                btnClick() {
+                    console.log(this.$refs.one.name);
+                    // this.$children.forEach(item => {
+                    //     console.log(item.name);
+                    // })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

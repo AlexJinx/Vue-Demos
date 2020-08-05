@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 3.使用组件 -->
+        <cpn1></cpn1>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpnTwo = Vue.extend({
+            template:
+                `
+                <div>
+                    <h1>标题</h1>
+                    <h2>我是组件2</h2>
+                </div>
+                `
+        });
+
+        const cpnOne = Vue.extend({
+            template:
+                `
+                <div>
+                    <h1>标题</h1>
+                    <cpn2></cpn2>
+                    <h2>我是组件1</h2>
+                </div>
+                `,
+            components: {
+                cpn2: cpnTwo
+            }
+        });
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: '你好呀!'
+            },
+            components: {
+                cpn1: cpnOne
+            }
+        });
+    </script>
+</body>
+
+</html>
