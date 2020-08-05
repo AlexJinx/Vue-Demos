@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <button>按钮</button>
+        </cpn>
+        <cpn>
+            <i>我是i标签</i>
+        </cpn>
+        <cpn>
+            <span>我是span标签</span>
+        </cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h1>我是子组件</h1>
+            <slot><a hre>我是默认的a标签</a></slot>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn'
+        }
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

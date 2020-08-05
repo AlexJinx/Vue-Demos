@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <template slot-scope="slot">
+                <span>{{slot.languages.join('/')}}</span>
+            </template>
+        </cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <slot :languages="languages">
+                <ul>
+                    <li v-for="(item,index) in languages">{{item}}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    languages: ['JS', 'C++', 'C#', 'Java', 'Go']
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>

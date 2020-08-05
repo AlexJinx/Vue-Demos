@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn> <span slot="left">传入的标签</span> </cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <slot name='left'><span>left</span></slot>
+            <slot name='center'><span>center</span></slot>
+            <slot name='right'><span>right</span></slot>
+            <slot><span>default</span></slot>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn'
+        }
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+            },
+            components: {
+                cpn
+            }
+        });
+    </script>
+</body>
+
+</html>
