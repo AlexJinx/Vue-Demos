@@ -20,5 +20,3 @@ console.log(addr);
 //导出所有
 import * as all from './A.js'
 console.log(all.height);
-
-
