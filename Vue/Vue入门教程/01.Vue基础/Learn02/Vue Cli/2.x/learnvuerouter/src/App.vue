@@ -5,7 +5,8 @@
     <router-link to="/About">关于</router-link>
     <router-link :to="{ path:'/Profile' ,query:{name:'wnm',age:22} }">档案</router-link>
     <button @click="proFileClick">档案</button>
-    <keep-alive v-if="this.$route.meta.keepAlive">
+
+    <keep-alive v-if="this.$route.meta.keepAlive" exclude="Profile,About">
       <router-view></router-view>
     </keep-alive>
     <router-view v-else></router-view>

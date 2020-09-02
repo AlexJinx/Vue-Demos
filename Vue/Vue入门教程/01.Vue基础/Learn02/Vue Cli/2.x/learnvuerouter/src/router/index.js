@@ -75,7 +75,7 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: {
-      title: '关于',
+      title: '我的',
       keepAlive: false
     }
   }
