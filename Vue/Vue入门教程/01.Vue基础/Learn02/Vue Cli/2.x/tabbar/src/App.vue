@@ -1,36 +1,45 @@
 <template>
   <div id="app">
-    <div id="tab-bar">
-      <div class="tab-bar-item">首页</div>
-      <div class="tab-bar-item">分类</div>
-      <div class="tab-bar-item">购物车</div>
-      <div class="tab-bar-item">我的</div>
-    </div>
+    <router-view></router-view>
+    <tabbar>
+      <!-- 传入点击活跃颜色 -->
+      <tabbaritem path="/home" activeColor="deeppink">
+        <img slot="item-icon" src="./assets/img/tabbar/Home.svg" alt />
+        <img slot="item-icon-active" src="./assets/img/tabbar/Home_Active.svg" alt />
+        <div slot="item-name">首页</div>
+      </tabbaritem>
+      <tabbaritem path="/category">
+        <img slot="item-icon" src="./assets/img/tabbar/Category.svg" alt />
+        <img slot="item-icon-active" src="./assets/img/tabbar/Category_Active.svg" alt />
+        <div slot="item-name">分类</div>
+      </tabbaritem>
+      <tabbaritem path="/car">
+        <img slot="item-icon" src="./assets/img/tabbar/Car.svg" alt />
+        <img slot="item-icon-active" src="./assets/img/tabbar/Car_Active.svg" alt />
+        <div slot="item-name">购物车</div>
+      </tabbaritem>
+      <tabbaritem path="/profile">
+        <img slot="item-icon" src="./assets/img/tabbar/Profile.svg" alt />
+        <img slot="item-icon-active" src="./assets/img/tabbar/Profile_Active.svg" alt />
+        <div slot="item-name">我的</div>
+      </tabbaritem>
+    </tabbar>
   </div>
 </template>
 
 <script>
+import tabbar from "./components/tabbar/TabBar";
+import tabbaritem from "./components/tabbar/TabBarItem";
+
 export default {
   name: "App",
+  components: {
+    tabbar,
+    tabbaritem,
+  },
 };
 </script>
 
 <style>
 @import "./assets/css/base.css";
-#tab-bar {
-  display: flex;
-  background-color: #f6f6f6;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* 加阴影 */
-  box-shadow: 0 -1px 1px rgba(100, 100, 100, .2); 
-}
-
-.tab-bar-item {
-  flex: 1;
-  text-align: center;
-  height: 49px;
-}
 </style>
