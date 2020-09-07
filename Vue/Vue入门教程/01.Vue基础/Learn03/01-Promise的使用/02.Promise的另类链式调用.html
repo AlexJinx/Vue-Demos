@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //另类链式调用，一般用于处理需要对第一次请求回来的参数做处理
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('AAA');
+            }, 1000);
+        }).then(res => {
+            //处理其他代码One
+            console.log('处理其他代码One', res);
+
+            //如果只做返回值处理，没有请求的话，就不存在 异常的情况。所以，可以只写resolve，不用写reject
+            return new Promise(resolve => {
+                resolve(res + '111')
+            })
+        }).then(res => {
+            //处理其他代码Two
+            console.log('处理其他代码Two', res);
+
+            return new Promise(resolve => {
+                resolve(res + '222')
+            })
+        }).then(res => {
+            console.log(res + '处理其他代码Three');
+        })
+
+
+        //针对第一次的简写
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('AAA');
+            }, 1000);
+        }).then(res => {
+            //处理其他代码One
+            console.log('处理其他代码One', res);
+
+            return Promise.resolve(res + '111') //简写
+        }).then(res => {
+            //处理其他代码Two
+            console.log('处理其他代码Two', res);
+
+            return Promise.resolve(res + '222')
+        }).then(res => {
+            console.log(res + '处理其他代码Three');
+        })
+
+
+
+        //针对第二次的简写
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('AAA');
+            }, 1000);
+        }).then(res => {
+            //处理其他代码One
+            console.log('处理其他代码One', res);
+
+            return res + '111' //简写
+        }).then(res => {
+            //处理其他代码Two
+            console.log('处理其他代码Two', res);
+
+            return res + '222'
+        }).then(res => {
+            console.log(res + '处理其他代码Three');
+        })
+
+
+    </script>
+</body>
+
+</html>
