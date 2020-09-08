@@ -36,7 +36,25 @@ export default {
       this.$store.commit("incrementCount", count);
     },
     updateUserInfo() {
-      this.$store.commit("updateUserInfo");
+      // this.$store.commit("updateUserInfo");
+
+      //异步修改
+      // this.$store.dispatch("actionUpdateInfo");
+
+      //手动骚操作(实现回调),使用函数进行回调
+      // this.$store.dispatch("actionUpdateInfo", {
+      //   //参数
+      //   msg: "携带的信息",
+      //   //回调函数
+      //   success: () => {
+      //     console.log("里面操作已经完成!");
+      //   },
+      // });
+
+      //使用Promis实现回调
+      this.$store.dispatch("actionUpdateInfo", "参数").then((res) => {
+        console.log(res);
+      });
     },
   },
 };
