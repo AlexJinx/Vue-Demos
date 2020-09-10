@@ -77,3 +77,35 @@ export function instanceForPromise(config) {
     })
 
 }
+
+
+//最终解决方案
+export function instanceLatest(config) {
+
+    // 1.创建一个axios实例,并做好配置
+    const instance = axios.create({
+        baseURL: 'http://123.207.32.32:8000',
+        timeout: 5000
+    })
+
+    //axios拦截器
+    instance.interceptors.request.use(config => {
+        console.log(config);
+        //可在请求中添加token，或者加上加载图标
+        return config;
+    }, err => {
+        console.log(err);
+    });
+    instance.interceptors.response.use(res => {
+
+        //对拦截的数据做处理，然后返回回去
+
+        return res
+
+    }, err => {
+
+    });
+
+    return instance(config); // 其实这里返回的就是一个Promise
+
+}

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
 
-import { request, instanceHandleCallBack, instanceHandleCallBackSimple, instanceForPromise } from './network/request'
+import { request, instanceHandleCallBack, instanceHandleCallBackSimple, instanceForPromise, instanceLatest } from './network/request'
 
 Vue.config.productionTip = false
 
@@ -101,6 +101,7 @@ instanceHandleCallBack({ url: '/home/multidata' },
  */
 
 
+/*使用Promise封装
 instanceForPromise({
   url: '/home/multidata'
 }).then(res => {
@@ -108,7 +109,16 @@ instanceForPromise({
 }).catch(err => {
   console.log(err);
 })
+ */
 
+//最终方案
+instanceLatest({
+  url: '/home/multidata'
+}).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
 
 
 
