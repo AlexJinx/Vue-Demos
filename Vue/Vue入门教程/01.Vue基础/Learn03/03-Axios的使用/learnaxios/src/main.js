@@ -13,6 +13,16 @@ new Vue({
 })
 
 
+
+axios({
+  url: 'http://192.168.0.15:9200/SolveRegister/111',
+  method: 'put'
+}).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
+
 /* 全局调用方法
 // axios({
 //   url: 'http://123.207.32.32:8000/home/multidata',
@@ -112,13 +122,13 @@ instanceForPromise({
  */
 
 //最终方案
-instanceLatest({
-  url: '/home/multidata'
-}).then(res => {
-  console.log(res);
-}).catch(err => {
-  console.log(err);
-})
+// instanceLatest({
+//   url: '/home/multidata'
+// }).then(res => {
+//   console.log(res);
+// }).catch(err => {
+//   console.log(err);
+// })
 
 
 
